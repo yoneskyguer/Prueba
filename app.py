@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_restful import Api
 from flask_jwt import JWT
 
@@ -18,7 +18,7 @@ api = Api(app)
 jwt = JWT(app, authenticate, identity) # /auth
 
 api.add_resource(Productos, '/producto/<string:name>')
-api.add_resource(Categorias, '/categoria/<string:name>')
+api.add_resource(Categorias, '/categorias/<string:name>')
 api.add_resource(CategoriaList, '/productos')
 
 api.add_resource(Registro_de_usuario, '/registro')

@@ -42,4 +42,4 @@ class Productos(Resource):
 
 class ProductoList(Resource):
     def get(self):
-        return {'productos': list(map(lambda x: x.json(), CategoriaModel.query.all()))}
+        return {'productos': list(map(lambda x: x.json(), ProductoModel.query.all()))}

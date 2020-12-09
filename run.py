@@ -14,7 +14,7 @@ create_tables2 = "CREATE TABLE IF NOT EXISTS producto (id INTEGER PRIMARY KEY AU
 cursor.execute(drop_table2)
 cursor.execute(create_tables2)
 
-create_tables3 = "CREATE TABLE IF NOT EXISTS categoria (id INTEGER PRIMARY KEY AUTOINCREMENT, producto text, valor real)"
+create_tables3 = "CREATE TABLE IF NOT EXISTS categorias (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, producto text, valor real)"
 cursor.execute(create_tables3)
 
 conexion.commit()

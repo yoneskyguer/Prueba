@@ -1,4 +1,4 @@
-from flask_restful import Resource, reqparse
+from flask_restful import Resource, reqparse, request
 from A.categorias import CategoriaModel
 
 
@@ -14,12 +14,13 @@ class Categorias(Resource):
         name = CategoriaModel(name)
         if name:
             return name.json()
+        print(request.json)
         return {'message': 'Artículo no encontrado'}
 
-    def post(self):
+    def post(self, name):
         data = Categorias.parser.parse_args()
 
-        name = CategoriaModel(data['name'], data['valor'])
+        name = CategoriaModel(name, *data)
         name.save_to_db()
 
         return {'message': 'Creado.'}
