@@ -1,9 +1,9 @@
 from werkzeug.security import safe_str_cmp
-from A.usuario import UserModel
+from Models.usuario import UserModel
 
 def authenticate(usuario, contrasena):
     usuario = UserModel.find_by_usuario(usuario)
-    
+
     if usuario and safe_str_cmp(usuario.contrasena, contrasena):
         return usuario
     return None

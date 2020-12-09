@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
-from A.producto import ProductoModel
-
+from Models.producto import ProductoModel
+from flask import request
 
 class Productos(Resource):
     def get(self, producto):
@@ -10,17 +10,13 @@ class Productos(Resource):
         return {'message': 'Artículo no encontrado'}
 
     def post(self):
-        data = Productos.parser.parse_args()
+        data = request.get_json()
+        producto = ProductoModel(data['name'], data['valor'], data.get('category_id'))
+        if not producto:
+            return {'message': 'Ocurrio un error al ingresar el artículo.'}, 500
+        producto.save_to_db()
 
-        """if ProductoModel.find_by_usuario(name):
-            return {'message': 'Ya exite un artículo con este usuario.'.format(name)}, 400"""
-
-        name = ProductoModel(data['name'], data['valor'])
-        name.save_to_db()
-
-        return {'message': 'Ocurrio un error al ingresar el artículo.'}, 500
-
-        return name.json(), 201
+        return producto.json(), 201
 
     def delete(self, producto):
         producto = Productos(producto)
@@ -42,4 +38,4 @@ class Productos(Resource):
 
 class ProductoList(Resource):
     def get(self):
-        return {'productos': list(map(lambda x: x.json(), CategoriaModel.query.all()))}
+        return {'productos': list(map(lambda x: x.json(), ProductoModel.query.all()))}
