@@ -1,11 +1,12 @@
 from flask import Flask, jsonify
 from flask_restful import Api
-from flask_jwt import JWT
+from flask_jwt import JWT, jwt_required
 
 from seguridad import authenticate, identity
-from B.usuario2 import Registro_de_usuario
-from B.categorias2 import Categorias, CategoriaList
-from B.producto2 import Productos, ProductoList
+from Controllers.usuario import Registro_de_usuario
+from Controllers.categorias import Categorias, CategoriaList
+from Controllers.producto import Productos, ProductoList
+from Controllers.productos import productos
 
 app = Flask(__name__)
 app.secret_key = 'Laura'
@@ -17,9 +18,11 @@ api = Api(app)
 
 jwt = JWT(app, authenticate, identity) # /auth
 
-api.add_resource(Productos, '/producto/<string:name>')
-api.add_resource(Categorias, '/categorias/<string:name>')
-api.add_resource(CategoriaList, '/productos')
+api.add_resource(Productos, '/producto')
+api.add_resource(ProductoList, '/productos')
+api.add_resource(Categorias, '/categoria')
+api.add_resource(CategoriaList, '/categorias')
+api.add_resource(productos, '/productos')
 
 api.add_resource(Registro_de_usuario, '/registro')
 
