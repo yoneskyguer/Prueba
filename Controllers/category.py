@@ -12,7 +12,7 @@ class Categories(Resource):
             return category.json()
         return {'message': 'Category not found'}
 
-    def getCategory(): 
+    def getCategory():
         return jsonify(active_categories)
 
         return jsonify({"message": "Category added successfully", "categories": Categories})
