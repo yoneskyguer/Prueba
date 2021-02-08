@@ -1,5 +1,4 @@
 from db import db
-from seed import product
 
 
 class ProductModel(db.Model):

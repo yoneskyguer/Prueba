@@ -2,7 +2,6 @@ from flask_restful import Resource, reqparse
 from Models.category import CategoryModel
 from flask_jwt import jwt_required
 from flask import request
-from seed import category
 
 class Categories(Resource):
 

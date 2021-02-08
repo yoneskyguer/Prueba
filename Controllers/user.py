@@ -1,6 +1,5 @@
 from flask_restful import Resource, reqparse
 from Models.user import UserModel
-from seed import user
 
 
 class User_register(Resource):

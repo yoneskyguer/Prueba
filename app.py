@@ -3,7 +3,6 @@ from flask_restful import Api
 from flask_jwt import JWT, jwt_required
 
 from segurity import authenticate, identity
-from seed import user, category, product
 from Controllers.user import User_register
 from Controllers.product import Products, ProductList
 from Controllers.category import Categories, CategoryList

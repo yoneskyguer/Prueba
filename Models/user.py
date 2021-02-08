@@ -1,6 +1,5 @@
 import sqlite3
 from db import db
-from seed import user
 
 
 class UserModel(db.Model):

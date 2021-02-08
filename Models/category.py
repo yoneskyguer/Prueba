@@ -1,6 +1,5 @@
 from db import db
 from .product import ProductModel
-from seed import category
 
 class CategoryModel(db.Model):
     __tablename__ = 'category'

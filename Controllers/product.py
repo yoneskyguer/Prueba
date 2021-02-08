@@ -2,7 +2,6 @@ from flask_restful import Resource, reqparse
 from Models.product import ProductModel
 from flask_jwt import jwt_required
 from flask import request
-from seed import product
 
 class Products(Resource):
     parser = reqparse.RequestParser()

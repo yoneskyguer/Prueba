@@ -1,5 +1,4 @@
 import sqlite3
-from seed import user, category, product
 
 conexion = sqlite3.connect('data.db')
 
